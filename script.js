@@ -1,10 +1,23 @@
-function add(){
-    
-}
+let inputField = document.querySelector('#myInput')
+let btn = document.querySelector(".addBtn")
+let list = document.querySelector(".myList")
 
-var list = document.querySelector('ul');
-list.addEventListener('click', function(ev) {
-  if (ev.target.tagName === 'LI') {
-    ev.target.classList.toggle('checked');
-  }
-}, false);
+btn.addEventListener("click", ()=>{
+  let inputValue = inputField.value
+  let newTask = document.createElement("li")
+  newTask.innerHTML = inputValue
+
+  let deleteBtn = document.createElement("button")
+  deleteBtn.innerText = "Delete"
+  deleteBtn.classList.add("deleteBtn")
+
+  deleteBtn.addEventListener("click", () => {
+    newTask.remove()
+  })
+
+  newTask.appendChild(deleteBtn)
+
+
+  list.appendChild(newTask)
+  inputField.value = ""
+})
